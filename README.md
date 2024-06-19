@@ -7,15 +7,11 @@
 Set the environment variables in [`/.env.development`](/.env.development):
 
 ```sh
-POSTGRES_URL="${POSTGRES_URL}"
-POSTGRES_URL_NO_SSL="${POSTGRES_URL_NO_SSL}"
-POSTGRES_URL_NON_POOLING="${POSTGRES_URL_NON_POOLING}"
-
-POSTGRES_USER="${POSTGRES_USER}"
-POSTGRES_PASSWORD="${POSTGRES_PASSWORD}"
-POSTGRES_HOST="${POSTGRES_HOST}"
-POSTGRES_DATABASE="${POSTGRES_DATABASE}"
+# get started quickly, by running:
+cat .env.example > .env.development
 ```
+
+Get more info about environment variables in the [`.env.example`](.env.example) file.
 
 ### 2. Dev Server
 
