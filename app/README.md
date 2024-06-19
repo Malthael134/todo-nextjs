@@ -1,18 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Todo App NextJS
 
-## Getting Started
+## Development
 
-First, run the development server:
+### 1. Environment variables
+
+Set the environment variables:
+
+#### PostgreSQL
+
+```sh
+POSTGRES_URL="${POSTGRES_URL}"
+POSTGRES_URL_NO_SSL="${POSTGRES_URL_NO_SSL}"
+POSTGRES_URL_NON_POOLING="${POSTGRES_URL_NON_POOLING}"
+POSTGRES_USER="${POSTGRES_USER}"
+POSTGRES_HOST="${POSTGRES_HOST}"
+POSTGRES_PASSWORD="${POSTGRES_PASSWORD}"
+POSTGRES_DATABASE="${POSTGRES_DATABASE}"
+```
+
+Note:
+For production environments, copy from the Vercel dashboard under: `Dashboard > Storage > PSQL Database > .env.local > "Copy Snipped"`
+
+### 2. Dev Server
+
+Install dependencies and run the development server
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# first (once)
+pnpm install
+# then
 pnpm dev
-# or
-bun dev
 ```
+
+### 3. View in Browser
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
