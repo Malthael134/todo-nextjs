@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    env_file:
+      - ".env.development"
+  database:
+    image: postgres
+    env_file:
+      - ".env.development"

@@ -4,22 +4,18 @@
 
 ### 1. Environment variables
 
-Set the environment variables:
-
-#### PostgreSQL
+Set the environment variables in [`/.env.development`](/.env.development):
 
 ```sh
 POSTGRES_URL="${POSTGRES_URL}"
 POSTGRES_URL_NO_SSL="${POSTGRES_URL_NO_SSL}"
 POSTGRES_URL_NON_POOLING="${POSTGRES_URL_NON_POOLING}"
+
 POSTGRES_USER="${POSTGRES_USER}"
-POSTGRES_HOST="${POSTGRES_HOST}"
 POSTGRES_PASSWORD="${POSTGRES_PASSWORD}"
+POSTGRES_HOST="${POSTGRES_HOST}"
 POSTGRES_DATABASE="${POSTGRES_DATABASE}"
 ```
-
-Note:
-For production environments, copy from the Vercel dashboard under: `Dashboard > Storage > PSQL Database > .env.local > "Copy Snipped"`
 
 ### 2. Dev Server
 
