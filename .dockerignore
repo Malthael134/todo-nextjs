@@ -1,0 +1,13 @@
+# Git
+.git
+.gitignore
+
+# Docker
+compose*.yaml
+Dockerfile*
+
+# Notes and Docs
+*.md
+
+# Others
+LICENSE
