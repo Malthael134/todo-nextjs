@@ -4,21 +4,34 @@
 
 ### 1. Environment variables configuration
 
-Set the environment variables in [`/.env.development`](/.env.development).
+Set the environment variables in [`/.env`](/.env).
 
 Get more info about environment variables in the [`.env.example`](.env.example) file.
 
 ```sh
 # get started quickly, by running:
-cat .env.example > .env.development
+cat .env.example > .env
 ```
 
 ### 2. Start the application
 
-Run the application using [**Docker**](https://docker.com)
+Run the application using [**Docker**](https://docker.com) and [**NodeJS**](https://nodejs.org).
 
 ```sh
+############
+# Database #
+############
+
+# start the database and adminer
 docker compose -f compose.dev.yaml up -d --build
+
+##########
+# NextJS #
+##########
+
+# install app dependencies
+pnpm install
+# run the app
 ```
 
 ### 3. View app in Browser
