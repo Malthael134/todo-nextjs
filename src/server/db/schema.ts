@@ -1,9 +1,10 @@
 // Example model schema from the Drizzle docs
 // https://orm.drizzle.team/docs/sql-schema-declaration
 
-import { sql } from "drizzle-orm";
+import { relations, sql } from "drizzle-orm";
 import {
     index,
+    integer,
     pgTableCreator,
     serial,
     text,
@@ -40,8 +41,9 @@ export const todos = createTable(
         title: varchar("title", { length: 256 })
             .notNull(),
         description: varchar("title", { length: 1024 }),
-        owner_id: serial("id")
-            .references(() => users.id),
+        owner_id: integer("owner_id")
+            .references(() => users.id)
+            .notNull(),
         createdAt: timestamp("created_at", { withTimezone: true })
             .default(sql`CURRENT_TIMESTAMP`)
             .notNull(),
@@ -52,3 +54,10 @@ export const todos = createTable(
             .on(example.title),
     }),
 );
+
+export const todosRelations = relations(todos, ({ one, many }) => ({
+    owner: one(users, {
+        fields: [todos.owner_id],
+        references: [users.id]
+    })
+}))
