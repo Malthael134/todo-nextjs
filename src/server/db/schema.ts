@@ -40,7 +40,7 @@ export const todos = createTable(
             .notNull(),
         title: varchar("title", { length: 256 })
             .notNull(),
-        description: varchar("title", { length: 1024 }),
+        description: varchar("description", { length: 1024 }),
         owner_id: integer("owner_id")
             .references(() => users.id)
             .notNull(),

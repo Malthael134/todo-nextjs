@@ -1,19 +1,23 @@
+"use server"
 import { db } from "@/server/db";
-import { todos, users } from "@/server/db/schema";
+import { todos } from "@/server/db/schema";
 import { eq } from "drizzle-orm";
 
+export interface TodoListProps {
+    owner_id: number
+}
 
-export async function TodoList(user: typeof users) {
+export async function TodoList({ owner_id }: TodoListProps) {
     const todoList = await db.select()
         .from(todos)
-        .where(eq(todos.owner_id, user.id));
+        .where(eq(todos.owner_id, owner_id));
 
     return (
         <ul>
             {todoList.map((todo) => (
                 <li>
-                    <h1 className="text-lg">{todo.title}</h1>
-                    {todo.description ? <div>{todo.description}</div> : <div>Description missing...</div>}
+                    <h1 className="text-lg">Title: {todo.title}</h1>
+                    <div>Description: {todo.description ? todo.description : "Description missing..."}</div>
                 </li>
             ))}
         </ul>
