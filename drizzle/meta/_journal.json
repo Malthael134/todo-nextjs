@@ -15,6 +15,13 @@
       "when": 1718889929979,
       "tag": "0001_mixed_doctor_spectrum",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1718919816131,
+      "tag": "0002_jittery_violations",
+      "breakpoints": true
     }
   ]
 }

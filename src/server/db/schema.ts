@@ -3,11 +3,12 @@
 
 import { sql } from "drizzle-orm";
 import {
-  index,
-  pgTableCreator,
-  serial,
-  timestamp,
-  varchar,
+    index,
+    pgTableCreator,
+    serial,
+    text,
+    timestamp,
+    varchar,
 } from "drizzle-orm/pg-core";
 
 /**
@@ -16,20 +17,38 @@ import {
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
-export const createTable = pgTableCreator((name) => `app_${name}`);
+export const createTable = pgTableCreator((name) => `${name}`);
+
+export const users = createTable(
+    "user",
+    {
+        id: serial("id")
+            .primaryKey()
+            .notNull(),
+        name: text("name")
+            .notNull()
+            .unique(),
+    }
+)
 
 export const todos = createTable(
-  "todo",
-  {
-    id: serial("id").primaryKey().notNull(),
-    title: varchar("title", { length: 256 }).notNull(),
-    description: varchar("title", { length: 1024 }),
-    createdAt: timestamp("created_at", { withTimezone: true })
-      .default(sql`CURRENT_TIMESTAMP`)
-      .notNull(),
-    completedAt: timestamp("updatedAt", { withTimezone: true }),
-  },
-  (example) => ({
-    titleIndex: index("title_idx").on(example.title),
-  })
+    "todo",
+    {
+        id: serial("id")
+            .primaryKey()
+            .notNull(),
+        title: varchar("title", { length: 256 })
+            .notNull(),
+        description: varchar("title", { length: 1024 }),
+        owner_id: serial("id")
+            .references(() => users.id),
+        createdAt: timestamp("created_at", { withTimezone: true })
+            .default(sql`CURRENT_TIMESTAMP`)
+            .notNull(),
+        completedAt: timestamp("updatedAt", { withTimezone: true }),
+    },
+    (example) => ({
+        titleIndex: index("title_idx")
+            .on(example.title),
+    }),
 );
