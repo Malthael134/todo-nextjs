@@ -22,6 +22,13 @@
       "when": 1718919816131,
       "tag": "0002_jittery_violations",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1718920103655,
+      "tag": "0003_hot_ogun",
+      "breakpoints": true
     }
   ]
 }

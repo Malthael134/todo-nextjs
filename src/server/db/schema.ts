@@ -25,7 +25,7 @@ export const users = createTable(
         id: serial("id")
             .primaryKey()
             .notNull(),
-        name: text("name")
+        name: varchar("name", { length: 20 })
             .notNull()
             .unique(),
     }
