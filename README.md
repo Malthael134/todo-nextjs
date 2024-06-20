@@ -4,16 +4,24 @@
 
 ### 1. Environment variables configuration
 
-Set the environment variables in [`/.env.development`](/.env.development):
+Set the environment variables in [`/.env.development`](/.env.development).
+
+Get more info about environment variables in the [`.env.example`](.env.example) file.
 
 ```sh
 # get started quickly, by running:
 cat .env.example > .env.development
 ```
 
-Get more info about environment variables in the [`.env.example`](.env.example) file.
+### 2. Start the application
 
-### 2. View app in Browser
+Run the application using [**Docker**](https://docker.com)
+
+```sh
+docker compose -f compose.dev.yaml up -d --build
+```
+
+### 3. View app in Browser
 
 **app:**
 
