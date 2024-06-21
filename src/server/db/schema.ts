@@ -3,6 +3,7 @@
 
 import { relations, sql } from "drizzle-orm";
 import {
+    boolean,
     index,
     integer,
     pgTableCreator,
@@ -38,6 +39,7 @@ export const todos = createTable(
             .default(sql`CURRENT_TIMESTAMP`)
             .notNull(),
         completedAt: timestamp("updatedAt", { withTimezone: true }),
+        completed: boolean("completed").notNull().default(false),
     },
     (example) => ({
         titleIndex: index("title_idx").on(example.title),
