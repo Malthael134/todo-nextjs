@@ -1,13 +1,11 @@
-"use server"
+"use server";
 
-import { db } from "@/server/db"
-import { users } from "@/server/db/schema"
-import { count } from "drizzle-orm"
+import { db } from "@/server/db";
+import { users } from "@/server/db/schema";
+import { count } from "drizzle-orm";
 
 export async function GetUserCount() {
-    const result = await db
-        .select({ count: count() })
-        .from(users);
+    const result = await db.select({ count: count() }).from(users);
 
     console.log(result);
 

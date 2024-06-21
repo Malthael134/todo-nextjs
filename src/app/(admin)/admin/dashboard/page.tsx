@@ -3,5 +3,5 @@ export default function AdminDashboard() {
         <main>
             <h1></h1>
         </main>
-    )
+    );
 }

@@ -3,5 +3,5 @@ export default function AdminHomePage() {
         <main>
             <h1></h1>
         </main>
-    )
+    );
 }

@@ -20,26 +20,16 @@ import {
  */
 export const createTable = pgTableCreator((name) => `${name}`);
 
-export const users = createTable(
-    "user",
-    {
-        id: serial("id")
-            .primaryKey()
-            .notNull(),
-        name: varchar("name", { length: 20 })
-            .notNull()
-            .unique(),
-    }
-)
+export const users = createTable("user", {
+    id: serial("id").primaryKey().notNull(),
+    name: varchar("name", { length: 20 }).notNull().unique(),
+});
 
 export const todos = createTable(
     "todo",
     {
-        id: serial("id")
-            .primaryKey()
-            .notNull(),
-        title: varchar("title", { length: 256 })
-            .notNull(),
+        id: serial("id").primaryKey().notNull(),
+        title: varchar("title", { length: 256 }).notNull(),
         description: varchar("description", { length: 1024 }),
         owner_id: integer("owner_id")
             .references(() => users.id)
@@ -50,14 +40,13 @@ export const todos = createTable(
         completedAt: timestamp("updatedAt", { withTimezone: true }),
     },
     (example) => ({
-        titleIndex: index("title_idx")
-            .on(example.title),
+        titleIndex: index("title_idx").on(example.title),
     }),
 );
 
 export const todosRelations = relations(todos, ({ one, many }) => ({
     owner: one(users, {
         fields: [todos.owner_id],
-        references: [users.id]
-    })
-}))
+        references: [users.id],
+    }),
+}));
