@@ -1,4 +1,5 @@
 {
     "editor.tabSize": 4,
-    "prettier.useTabs": false
+    "prettier.useTabs": false,
+    "git.ignoreLimitWarning": true
 }
