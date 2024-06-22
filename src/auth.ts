@@ -5,7 +5,12 @@ import { users } from "@/server/db/schema";
 import { eq } from "drizzle-orm";
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 
-export const { handlers, auth, signIn, signOut } = NextAuth({
+export const {
+    handlers: { GET, POST },
+    auth,
+    signIn,
+    signOut,
+} = NextAuth({
     providers: [
         CredentialsProvider({
             credentials: {
@@ -32,5 +37,5 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
             },
         }),
     ],
-    adapter: DrizzleAdapter(db)
+    adapter: DrizzleAdapter(db),
 });

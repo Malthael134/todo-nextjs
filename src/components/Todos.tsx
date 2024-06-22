@@ -10,8 +10,7 @@ export interface TodoListProps {
 }
 
 export async function TodoList({ username }: TodoListProps) {
-
-    const [todoList, setTodoList] = useState<typeof todos.$inferSelect[]>([])
+    const [todoList, setTodoList] = useState<(typeof todos.$inferSelect)[]>([]);
 
     useEffect(() => {
         (async () => {
@@ -20,9 +19,7 @@ export async function TodoList({ username }: TodoListProps) {
             )[0];
 
             if (!user) {
-                return (
-                    <div>User {username} not found!</div>
-                )
+                return <div>User {username} not found!</div>;
             }
 
             const result = await db
@@ -30,9 +27,9 @@ export async function TodoList({ username }: TodoListProps) {
                 .from(todos)
                 .where(eq(todos.owner_id, user.id));
 
-            setTodoList(result)
-        })()
-    }, [])
+            setTodoList(result);
+        })();
+    }, []);
 
     return (
         <>
@@ -42,7 +39,8 @@ export async function TodoList({ username }: TodoListProps) {
                         <li key={todo.id}>
                             <h1 className="text-lg">Title: {todo.title}</h1>
                             <div>
-                                Description: {todo.description ?? "Description missing..."}
+                                Description:{" "}
+                                {todo.description ?? "Description missing..."}
                             </div>
                         </li>
                     ))}
