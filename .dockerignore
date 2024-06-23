@@ -11,5 +11,5 @@ Dockerfile*
 
 # Others
 LICENSE
-node_modules
-db-data
+/node_modules/
+/data/
