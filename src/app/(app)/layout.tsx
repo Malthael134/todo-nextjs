@@ -16,7 +16,12 @@ export default function RootLayout({
     return (
         <html lang="en" className={`${GeistSans.variable}`}>
             <body className="flex h-dvh w-dvw flex-col px-16 py-4 md:px-24 md:py-6 lg:px-32 lg:py-8">
-                {children}
+                <nav className="mb-4">
+                    <a href="/">
+                        <h1 className="text-2xl">Todo App</h1>
+                    </a>
+                </nav>
+                <main className="flex-grow">{children}</main>
             </body>
         </html>
     );

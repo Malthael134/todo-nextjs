@@ -1,8 +1,7 @@
-"use server";
+"use client";
 import { db } from "@/server/db";
 import { todos, users } from "@/server/db/schema";
 import { eq } from "drizzle-orm";
-import { todo } from "node:test";
 import { useEffect, useState } from "react";
 
 export interface TodoListProps {
@@ -31,23 +30,19 @@ export async function TodoList({ username }: TodoListProps) {
         })();
     }, []);
 
-    return (
-        <>
-            {todoList.length > 0 ? (
-                <ul>
-                    {todoList.map((todo) => (
-                        <li key={todo.id}>
-                            <h1 className="text-lg">Title: {todo.title}</h1>
-                            <div>
-                                Description:{" "}
-                                {todo.description ?? "Description missing..."}
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-            ) : (
-                <div>No todo items found</div>
-            )}
-        </>
+    return todoList.length > 0 ? (
+        <ul>
+            {todoList.map((todo) => (
+                <li key={todo.id}>
+                    <h1 className="text-lg">Title: {todo.title}</h1>
+                    <div>
+                        Description:{" "}
+                        {todo.description ?? "Description missing..."}
+                    </div>
+                </li>
+            ))}
+        </ul>
+    ) : (
+        <div>No todo items found</div>
     );
 }
